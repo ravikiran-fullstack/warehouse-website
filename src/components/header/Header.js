@@ -35,7 +35,7 @@ const Header = () => {
   
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light menuContainer"
+      className="navbar navbar-expand-lg navbar-dark menuContainer"
       style={{ background: "transparent" }}
     >
       <Link className="navbar-brand" to="/home">
