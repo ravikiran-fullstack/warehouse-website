@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/Header";
@@ -41,6 +41,9 @@ const App = () => {
 
           <Route path="/location" >
             <Location/>
+          </Route>
+          <Route path="/contactus" >
+            <ContactUs/>
           </Route>
         </Switch>
         <Footer />

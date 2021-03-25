@@ -85,14 +85,19 @@ const Header = () => {
               Location
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/contactus">
+              Contact Us
+            </Link>
+          </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
-          <button
+          {/* <button
             type="button"
             className="btn btn-info my-2 my-sm-0 ml-2"
           >
             Contact Us
-          </button>
+          </button> */}
           {/*  */}
           {/* <div>
             <img className="customAvatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
