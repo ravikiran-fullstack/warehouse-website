@@ -76,6 +76,9 @@
     cursor: pointer;
   }
   
+  .active{
+    background: rgb(179, 67, 67);
+  }
   
   /* drop down menu classes */
   

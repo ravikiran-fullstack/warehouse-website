@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from "react";
 
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import './Header.css';
 
@@ -60,35 +60,35 @@ const Header = () => {
         id="navbarSupportedContent"
       >
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/home">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/home" activeClassName="active">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/aboutus">
+            <NavLink className="nav-link" to="/aboutus">
               About Us
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/properties">
+            <NavLink className="nav-link" to="/properties">
               Our Properties
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/gallery">
+            <NavLink className="nav-link" to="/gallery">
               Gallery
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/location">
+            <NavLink className="nav-link" to="/location">
               Location
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/contactus">
+            <NavLink className="nav-link" to="/contactus">
               Contact Us
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">

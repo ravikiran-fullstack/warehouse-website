@@ -1,0 +1,16 @@
+.imageSliderContainer{
+    display: flex;
+}
+
+.imageSlider{
+    width: 600px;
+    height: 500px;
+}
+
+.activeSlide{
+    display: block;
+}
+
+.inActiveSlide{
+    display: none;
+}
