@@ -39,7 +39,7 @@ const Header = () => {
       style={{ background: "transparent" }}
     >
       <Link className="navbar-brand" to="/home">
-        <h4>Marappa Exclusive Warehouse</h4>
+        <h4>Marappa Exclusive <br/> Warehouse</h4>
       </Link>
       <button
         className="navbar-toggler"
