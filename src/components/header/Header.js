@@ -59,7 +59,7 @@ const Header = () => {
         className={`navbar-collapse menu ${isActive ? "active" : "inactive"}`}
         id="navbarSupportedContent"
       >
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav">
           <li className="nav-item">
             <NavLink className="nav-link" to="/home" activeClassName="active">
               Home
@@ -91,19 +91,19 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          {/* <button
+        {/* <form className="form-inline my-2 my-lg-0">
+          <button
             type="button"
             className="btn btn-info my-2 my-sm-0 ml-2"
           >
             Contact Us
-          </button> */}
-          {/*  */}
-          {/* <div>
+          </button>
+          
+          <div>
             <img className="customAvatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
               <button className="btn btn-info my-2 my-sm-0 ml-2">login</button>
-          </div> */}
-        </form>
+          </div>
+        </form> */}
       </div>
     </nav>
   );

@@ -178,3 +178,8 @@
           text-align: center;
         }
   }
+
+  .navbar-nav{
+    width: 100%;
+    justify-content: space-around;
+  }
