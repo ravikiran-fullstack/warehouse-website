@@ -1,9 +1,86 @@
-import React from "react";
-import './Contact.css';
+import React, { useState, useEffect } from "react";
+import "./Contact.css";
 
 const ContactUs = () => {
+  const [to_name, setToName] = useState(
+    process.env.REACT_APP_EMAILJS_RECEIVER_NAME
+  );
+  const [from_name, setFromName] = useState();
+  const [reply_to, setReplyTo] = useState();
+  const [message, setMessage] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitSuccessful, setFormSubmitSuccessful] = useState(false);
+
+  useEffect(()=> {
+    console.log('formSubmitSuccessful',formSubmitSuccessful);
+    setFromName('');
+    setReplyTo('');
+    setPhoneNumber('');
+    setMessage('');
+  }, [formSubmitSuccessful])
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit', from_name, reply_to, message, phoneNumber)
+    const receiverEmail = process.env.REACT_APP_EMAILJS_RECEIVER;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATEID;
+    const user = process.env.REACT_APP_EMAILJS_USERID;
+    console.log(receiverEmail, templateId, user);
+
+    setMessage(prevMessage => prevMessage + ' Phone Number: '+phoneNumber)
+
+    sendFeedback({
+      receiverEmail,
+      templateId,
+      message,
+      to_name,
+      from_name, 
+      reply_to,
+      user,
+    });
+
+    setFormSubmitted(true);
+  }
+
+ 
+  const sendFeedback = ({
+    templateId,
+    receiverEmail,
+    message,
+    to_name,
+    from_name,
+    reply_to,
+    user,
+  }) => {
+    window.emailjs
+      .send(
+        "default_service",
+        templateId,
+        {
+          receiverEmail,
+          message,
+          to_name,
+          from_name,
+          reply_to,
+        },
+        user
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          setFormSubmitSuccessful(true);
+        }
+      })
+      // Handle errors here however you like
+      .catch((err) => console.error("Failed to send Message. Error: ", err));
+  };
+
+
   return (
     <>
+      <p>{process.env.REACT_APP_EMAILJS_USERID}</p>
       <section className="container mt-3">
         <div className="row">
           <div className="col-sm-12 mb-4 col-md-5">
@@ -17,81 +94,73 @@ const ContactUs = () => {
                 </div>
               </div>
               <div className="card-body py-2 pl-3 pr-3">
-                <div className="form-group">
-                  <label>
-                    {" "}
-                    Your name <span>*</span>
-                  </label>
-                  <div className="input-group">
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label>
+                      {" "}
+                      Your name <span>*</span>
+                    </label>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={from_name}
+                        onChange={(e) => setFromName(e.target.value)}
+                        placeholder="Your name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      Your email<span>*</span>
+                    </label>
+                    <div className="input-group mb-2 mb-sm-0">
+                      <input
+                        type="email"
+                        value=""
+                        className="form-control"
+                        value={reply_to}
+                        onChange={(e) => setReplyTo(e.target.value)}
+                        placeholder="Email"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>Your Phone Number</label>
+                    <div className="input-group mb-2 mb-sm-0">
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        placeholder="Phone Number"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>Message</label>
+                    <div className="input-group mb-2 mb-sm-0">
+                      <textarea
+                        type="text"
+                        className="form-control"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center">
                     <input
-                      value=""
-                      type="text"
-                      name="data[name]"
-                      className="form-control"
-                      id="inlineFormInputGroupUsername"
-                      placeholder="Your name"
-                      required
+                      type="submit"
+                      value="Submit"
+                      className="btn btn-primary btn-block rounded-0 py-2"
                     />
                   </div>
-                </div>
-                <div className="form-group">
-                  <label>
-                    Your email<span>*</span>
-                  </label>
-                  <div className="input-group mb-2 mb-sm-0">
-                    <input
-                      type="email"
-                      value=""
-                      name="data[email]"
-                      className="form-control"
-                      id="inlineFormInputGroupUsername"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Your Phone Number</label>
-                  <div className="input-group mb-2 mb-sm-0">
-                    <input
-                      type="number"
-                      className="form-control"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>
-                    Subject<span>*</span>
-                  </label>
-                  <div className="input-group mb-2 mb-sm-0">
-                    <input
-                      type="text"
-                      name="data[subject]"
-                      className="form-control"
-                      id="inlineFormInputGroupUsername"
-                      placeholder="Subject"
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Message</label>
-                  <div className="input-group mb-2 mb-sm-0">
-                    <textarea
-                      type="text"
-                      className="form-control"
-                      name="message"
-                    />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <input
-                    type="submit"
-                    name="submit"
-                    value="submit"
-                    className="btn btn-primary btn-block rounded-0 py-2"
-                  />
-                </div>
+                </form>
+                {formSubmitSuccessful && <div><p>Your Enquiry Sent Successfully</p></div>}
               </div>
             </div>
           </div>
