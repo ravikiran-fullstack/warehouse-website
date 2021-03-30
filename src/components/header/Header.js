@@ -38,9 +38,11 @@ const Header = () => {
       className="navbar navbar-expand-lg navbar-dark menuContainer"
       style={{ background: "transparent" }}
     >
-      <Link className="navbar-brand" to="/home" style={{flexGrow: 1}}>
-        <h4>Marappa Exclusive <br/> Warehouse</h4>
-      </Link>
+     {/* // <Link className="navbar-brand" to="/home" style={{flexGrow: 1}}> */}
+        <div className="navbar-brand" style={{flexGrow: 1}}>
+          <h4>Marappa Exclusive Warehouse</h4>
+        </div>
+      {/* </Link> */}
       <button
         className="navbar-toggler"
         type="button"
