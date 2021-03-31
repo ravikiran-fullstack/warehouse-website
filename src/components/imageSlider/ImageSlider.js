@@ -70,7 +70,7 @@ const ImageSlider = () => {
     //     </div>
     // </div>
 
-    <div className="container my-4">
+    <div className="container">
       <div
         id="carousel-thumb"
         className="carousel slide carousel-fade carousel-thumbnails"
