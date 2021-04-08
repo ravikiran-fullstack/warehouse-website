@@ -40,7 +40,7 @@ const Header = () => {
     >
      {/* // <Link className="navbar-brand" to="/home" style={{flexGrow: 1}}> */}
         <div className="navbar-brand" style={{flexGrow: 1}}>
-          <h4>Marappa Exclusive Warehouse</h4>
+          <h1>Marappa Exclusive Warehouse</h1>
         </div>
       {/* </Link> */}
       <button
